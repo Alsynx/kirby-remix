@@ -3,16 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - projectile
   - Water
   - UI
-  - 
-  - 
+  - confiner
+  - ground
   - 
   - 
   - 
@@ -43,4 +44,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3138814711
+    locked: 0
+  - name: terrain
+    uniqueID: 2206756055
     locked: 0
