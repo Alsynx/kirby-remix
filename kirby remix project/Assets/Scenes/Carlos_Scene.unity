@@ -519,12 +519,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd25dd3a13a916445955d421398cfaec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
   groundCheck: {fileID: 1483124218}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  doubleJump: 0
+  jumpingPower: 16
+  speed: 6
   absorbEffect: {fileID: 0}
   hitEffect: {fileID: 0}
   currentHealth: 0
@@ -1420,7 +1420,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &1130446144
 GameObject:
   m_ObjectHideFlags: 0
