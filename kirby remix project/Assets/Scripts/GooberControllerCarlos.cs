@@ -19,7 +19,11 @@ public class GooberController : MonoBehaviour
 
     private float horizontal;
     private bool isFacingRight = true;
-    public float speed =8f;
+
+    //Speed variable is for regular goob, Fspeed is for fire goob.
+    public float speed =8f; 
+    public float Fspeed =600f;
+
     private bool doubleJump;
 
     public ParticleSystem absorbEffect; //absorb and hit particles
@@ -31,6 +35,9 @@ public class GooberController : MonoBehaviour
     public float timeInvincible = 2.0f;
     bool isInvincible;
     float invincibleTimer;
+// Booleans for each goob transformation.
+    bool NormalGoob;
+    bool FireGoob;
 
     
     // Start is called before the first frame update
@@ -40,11 +47,15 @@ public class GooberController : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         currentHealth = maxHealth;
+
+        //goob always starts the game as  Normalgoob.
+        NormalGoob = true;
+        FireGoob = false;
     }
 
     void Update()
     {
-        //goober's movement
+        //goober's movement (NOT WORKING)
         horizontal = Input.GetAxisRaw("Horizontal");
 
         Flip();
@@ -54,11 +65,20 @@ public class GooberController : MonoBehaviour
             doubleJump = false;
         }
 
-
+      //Test function of the Goob Transform System. WORKS!
+      if (Input.GetKeyDown(KeyCode.X))
+        {
+             NormalGoob = false;
+            FireGoob = true;
+        print("Fire mode");
+        }
+        
         if(Input.GetKeyDown(KeyCode.Space))
         {
+
                 if (IsGrounded())
             gooberRig.velocity = new Vector2(gooberRig.velocity.x, jumpingPower);
+
             
          
         
@@ -82,7 +102,19 @@ public class GooberController : MonoBehaviour
     private void FixedUpdate()
     {
        /* gooberRig.velocity = new Vector2(horizontal * speed, gooberRig.velocity.y);*/
+
+        /*This is the big one. These are the functions that will hold most of the changes between the goober transformations. Put all the animations, projectile functions in here. Also you might want to add a third jump into this part 
+        for the air goob or if it doesn't work add the third jump onto the getkeydown space function above this fixedupdate. Refer to the youtube tutorial for double jumping. */
+
+       if (NormalGoob && !FireGoob)
+       {
        gooberRig.AddForce(new Vector2(horizontal * speed * Time.fixedDeltaTime, 0), ForceMode2D.Impulse);
+       }
+              if (FireGoob && !NormalGoob)
+       {
+       gooberRig.AddForce(new Vector2(horizontal * Fspeed * Time.fixedDeltaTime, 0), ForceMode2D.Impulse);
+       }
+       
     }
 
      private void Flip()
