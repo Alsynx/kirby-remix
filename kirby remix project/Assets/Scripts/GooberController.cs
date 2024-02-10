@@ -19,7 +19,7 @@ public class GooberController : MonoBehaviour
 
     private float horizontal;
     private bool isFacingRight = true;
-    public float speed =6f;
+    public float speed =8f;
     private bool doubleJump;
 
     public ParticleSystem absorbEffect; //absorb and hit particles
@@ -28,6 +28,9 @@ public class GooberController : MonoBehaviour
     public int health { get { return currentHealth; }} //goober's health
     public int currentHealth;
     public int maxHealth = 5;
+    public float timeInvincible = 2.0f;
+    bool isInvincible;
+    float invincibleTimer;
 
     
     // Start is called before the first frame update
@@ -56,12 +59,14 @@ public class GooberController : MonoBehaviour
         {
                 if (IsGrounded())
             gooberRig.velocity = new Vector2(gooberRig.velocity.x, jumpingPower);
+            
          
         
             else if (!doubleJump)
             {
                 gooberRig.velocity = new Vector2(gooberRig.velocity.x, jumpingPower);
                 doubleJump = true;
+               
             }
 
 
@@ -76,7 +81,8 @@ public class GooberController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        gooberRig.velocity = new Vector2(horizontal * speed, gooberRig.velocity.y);
+       /* gooberRig.velocity = new Vector2(horizontal * speed, gooberRig.velocity.y);*/
+       gooberRig.AddForce(new Vector2(horizontal * speed * Time.fixedDeltaTime, 0), ForceMode2D.Impulse);
     }
 
      private void Flip()
@@ -89,6 +95,22 @@ public class GooberController : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
              }
+    }
+
+        public void ChangeHealth(int amount) //function to change health
+    {
+        if (amount < 0)
+        {
+            if (isInvincible)
+                return;
+            
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+        }
+        
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
 
     
