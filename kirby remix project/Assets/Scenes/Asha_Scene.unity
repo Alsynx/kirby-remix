@@ -18448,10 +18448,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: gooberPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 7027487375960572671, guid: 9c78dc826508cf446b68339c38a38526, type: 3}
-      propertyPath: GodModeOn
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c78dc826508cf446b68339c38a38526, type: 3}
 --- !u!1 &2067521068

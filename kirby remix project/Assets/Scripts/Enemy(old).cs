@@ -67,7 +67,7 @@ public class EnemyOld : MonoBehaviour
             if(timer > 2)
             {
                 timer = 0;
-                Launch();
+                AttackGoober();
             }
         }
 
@@ -88,9 +88,9 @@ public class EnemyOld : MonoBehaviour
     }
     
     // method allows enemies to attack Goober
-    void Launch()
+    void AttackGoober()
     {
-
+        //Instantiate(projectile, enemyRig.position + Vector2.up * 0.5f, Quaternion.identity);
     }
 
 
@@ -109,15 +109,14 @@ public class EnemyOld : MonoBehaviour
         } 
     }
     */
-    /* commented out while we debug.
+    
     public void EnemyDeath()
     {
-            //optional if you added the fixed animation
-            animator.SetTrigger("EnemyDeath");
+        EnemyController enemies = this.gameObject.GetComponent<EnemyController>();
+        //optional if you added the fixed animation
+        animator.SetTrigger("EnemyDeath");
 
-            Destroy(enemies.gameObject);
-
-            GooberController.ChangeScore(1);
-    } */
-
+        Destroy(enemies.gameObject);
+    } 
+    
 }

@@ -23,4 +23,13 @@ public class LoseState : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        
+        Lose_Screen.SetActive(true);  //activates the lose screen when goober falls on the collider.
+        Goober.SetActive(false); //deletes goober.
+        YouLoseSound.Play();
+        
+    }
+
 }
