@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -42,9 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 3138814711
-    locked: 0
   - name: terrain
     uniqueID: 2206756055
+    locked: 0
+  - name: UI
+    uniqueID: 3138814711
     locked: 0

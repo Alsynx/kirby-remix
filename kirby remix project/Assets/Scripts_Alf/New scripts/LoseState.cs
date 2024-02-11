@@ -6,7 +6,8 @@ public class LoseState : MonoBehaviour
 {
     public GameObject Lose_Screen;
     public GameObject Goober;
-    public AudioSource YouLoseSound;
+    public AudioSource audioSource;
+    public AudioClip YouLoseSound;
     // Level move zoned enter, if collider is a player
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -18,10 +19,23 @@ public class LoseState : MonoBehaviour
         {
             Lose_Screen.SetActive(true);  //activates the lose screen when goober falls on the collider.
             Goober.SetActive(false); //deletes goober.
-            YouLoseSound.Play();
-           
+            PlaySound(YouLoseSound);
 
         }
     }
 
+    public void GameOver()
+    {
+        
+        Lose_Screen.SetActive(true);  //activates the lose screen when goober falls on the collider.
+        Goober.SetActive(false); //deletes goober.
+        PlaySound(YouLoseSound);
+        
+    }
+
+    //Made a few adjustments for Audio Clip config -Alfred
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
 }

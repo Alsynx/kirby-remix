@@ -6,7 +6,8 @@ public class WinState : MonoBehaviour
 {
     public GameObject Win_Screen;
     public GameObject Goober;
-    public AudioSource YouWinSound;
+    public AudioSource audioSource;
+    public AudioClip YouWinSound;
     // Level move zoned enter, if collider is a player
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -18,9 +19,15 @@ public class WinState : MonoBehaviour
         {
             Win_Screen.SetActive(true);  //activates the lose screen when goober falls on the collider.
             Goober.SetActive(false); //deletes goober.
-            YouWinSound.Play();
+            PlaySound(YouWinSound);
 
         }
+    }
+
+    //Made a few adjustments for Audio Clip config -Alfred
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 
 }

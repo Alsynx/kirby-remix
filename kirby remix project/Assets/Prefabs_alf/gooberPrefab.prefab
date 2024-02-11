@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7027487375960572665}
   - component: {fileID: 7027487375960572664}
-  - component: {fileID: 4176577533730029797}
   - component: {fileID: 7027487375960572670}
   - component: {fileID: 7027487375960572669}
   - component: {fileID: 773560962}
+  - component: {fileID: 1963587357}
   m_Layer: 0
   m_Name: gooberPrefab
   m_TagString: Player
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -1402093258, guid: 95a2c216b7681a544a1f776b1cb46631, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -89,30 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4176577533730029797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7027487375960572668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39bac2b5ea615a7418d3cd56f09840d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundCheck: {fileID: 7027487377112362976}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  jumpingPower: 16
-  speed: 15
-  Fspeed: 600
-  absorbEffect: {fileID: 0}
-  hitEffect: {fileID: 0}
-  currentHealth: 0
-  maxHealth: 5
-  timeInvincible: 2
 --- !u!50 &7027487375960572670
 Rigidbody2D:
   serializedVersion: 4
@@ -180,6 +156,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1963587357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7027487375960572668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ceb71c684e07a4cb85edfa4537e1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2960315193981519417, guid: 9fdb8cb5c0d614540be76196529c10eb, type: 3}
+  projSpeed: 15
+  groundCheck: {fileID: 7027487377112362976}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  jumpingPower: 16
+  absorbEffect: {fileID: 2461406915158500279, guid: e9a6b68644ba7164f9dc969ac9fe072f, type: 3}
+  currentHealth: 5
+  maxHealth: 5
+  timeInvincible: 2
+  speed: 8
+  Fspeed: 7.5
+  Dspeed: 10
+  dashDuration: 0
+  spriteR: {fileID: 7027487375960572664}
+  NormalGoober: {fileID: -1402093258, guid: 95a2c216b7681a544a1f776b1cb46631, type: 3}
+  FireGoober: {fileID: -2718411254211731894, guid: bdebcc5abf494e146bd403f8e92e767f, type: 3}
+  WindGoober: {fileID: -2718411254211731894, guid: 4a70dae0c52d03e4f81451d75d2bdf38, type: 3}
+  greenAnim: {fileID: 22100000, guid: 00e2e3297607cf5429d100f64681867f, type: 2}
+  redAnim: {fileID: 22100000, guid: 9a178e012d615354393ec5a59e4ece66, type: 2}
+  GodModeOn: 0
 --- !u!1 &7027487377112362983
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7027487377112362983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -1.9, z: 0}
+  m_LocalPosition: {x: -0.04, y: -0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

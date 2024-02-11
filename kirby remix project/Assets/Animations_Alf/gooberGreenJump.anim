@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: gooberJump
+  m_Name: gooberGreenJump
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,8 +19,8 @@ AnimationClip:
   m_FloatCurves: []
   m_PPtrCurves:
   - curve:
-    - time: 1
-      value: {fileID: -1376196425, guid: 95a2c216b7681a544a1f776b1cb46631, type: 3}
+    - time: 0
+      value: {fileID: 1716968627546395383, guid: 4a70dae0c52d03e4f81451d75d2bdf38, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -40,13 +40,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1376196425, guid: 95a2c216b7681a544a1f776b1cb46631, type: 3}
+    - {fileID: 1716968627546395383, guid: 4a70dae0c52d03e4f81451d75d2bdf38, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
