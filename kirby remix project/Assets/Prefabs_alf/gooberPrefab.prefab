@@ -1,5 +1,63 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &783126322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 783126323}
+  - component: {fileID: 783126324}
+  m_Layer: 0
+  m_Name: Absorb Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &783126323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783126322}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.01, y: 0.38, z: -1.0502594}
+  m_LocalScale: {x: 1.0020496, y: 1.0020496, z: 1.0020496}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7027487375960572665}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &783126324
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783126322}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.7920594, y: 0.3168239}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5841188, y: 1.6336473}
+  m_EdgeRadius: 0
 --- !u!1 &7027487375960572668
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +72,7 @@ GameObject:
   - component: {fileID: 7027487375960572669}
   - component: {fileID: 773560962}
   - component: {fileID: 1963587357}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gooberPrefab
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -34,6 +92,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7027487377112362976}
+  - {fileID: 783126323}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -168,6 +227,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ceb71c684e07a4cb85edfa4537e1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  absorbHitbox: {fileID: 783126322}
+  Goober: {fileID: 7027487375960572668}
+  Lose_Screen: {fileID: 0}
+  YouLoseSound: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
+  audioSource: {fileID: 0}
   projectilePrefab: {fileID: 2960315193981519417, guid: 9fdb8cb5c0d614540be76196529c10eb, type: 3}
   projSpeed: 15
   groundCheck: {fileID: 7027487377112362976}
@@ -176,7 +240,7 @@ MonoBehaviour:
     m_Bits: 128
   jumpingPower: 16
   absorbEffect: {fileID: 2461406915158500279, guid: e9a6b68644ba7164f9dc969ac9fe072f, type: 3}
-  currentHealth: 5
+  currentHealth: 1
   maxHealth: 5
   timeInvincible: 2
   speed: 8
@@ -199,7 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7027487377112362976}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}

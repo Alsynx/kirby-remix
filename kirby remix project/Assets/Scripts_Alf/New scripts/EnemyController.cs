@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
+    public bool enemyAbsorbed;
+
     public float speed; // speed var: how fast enemy moves --Asha
     public Rigidbody2D enemyRig; // var to control enemy's rigidbody --Asha
     Animator animator; // var accesses enemy's animator --Asha
@@ -51,6 +53,8 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player"); 
         enemyRig = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        enemyAbsorbed = false;
     }
 
     // Update is called once per frame
@@ -75,6 +79,10 @@ public class EnemyController : MonoBehaviour
             }
         }
         
+        if (enemyAbsorbed == true)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void FixedUpdate()

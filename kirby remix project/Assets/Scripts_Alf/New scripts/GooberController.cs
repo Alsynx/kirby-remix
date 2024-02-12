@@ -7,10 +7,15 @@ using UnityEngine.InputSystem;
 public class GooberController : MonoBehaviour
 {
     
+    public GameObject absorbHitbox;
+
+    public GameObject Goober;
+    public GameObject Lose_Screen;
+    public AudioClip YouLoseSound;
     
     Rigidbody2D gooberRig;
     Animator animator; //for goober's regular animation
-    AudioSource audioSource;
+    public AudioSource audioSource;
 
     // Projectiles
     //public GameObject projectilePrefab;
@@ -72,7 +77,7 @@ public class GooberController : MonoBehaviour
     {
         gooberRig = GetComponent<Rigidbody2D>(); 
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
         spriteR = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
         
@@ -173,11 +178,8 @@ public class GooberController : MonoBehaviour
     void Absorb()
     {
         Launch();
-        GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-        Destroy(enemy);
-
-        Instantiate(absorbEffect, transform.position, transform.rotation); //added to play particles on absorbing -Alfred
-        
+        /*Instantiate(absorbEffect, transform.position, transform.rotation); //added to play particles on absorbing -Alfred
+        Destroy(absorbEffect);*/
     }
 
     private void FixedUpdate()
@@ -223,21 +225,32 @@ public class GooberController : MonoBehaviour
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.name.Equals("Fire_Enemy"))
-        { 
-            NormalGoob = false;
-            FireGoob = true;
-            WindGoob = false;
-        }
-        else if(other.gameObject.name.Equals("Wind_Enemy"))
-        {
-            NormalGoob = false;
-            FireGoob = false;
-            WindGoob = true;
-        }
+            EnemyController controller = other.GetComponent<EnemyController>();
+            if (controller !=null)
+            {
+                controller.enemyAbsorbed = true;
+            }
+
+            if(other.gameObject.name.Equals("Fire_Enemy"))
+            { 
+                NormalGoob = false;
+                FireGoob = true;
+                WindGoob = false;
+                Instantiate(absorbEffect, transform.position, transform.rotation);
+            }
+            else if(other.gameObject.name.Equals("Wind_Enemy"))
+            {
+                NormalGoob = false;
+                FireGoob = false;
+                WindGoob = true;
+                Instantiate(absorbEffect, transform.position, transform.rotation);
+            }
+
+         //added to play particles on absorbing -Alfred
+        Destroy(absorbEffect);
     }
 
 
@@ -260,17 +273,29 @@ public class GooberController : MonoBehaviour
         if(currentHealth <= 0)
         {
             isInvincible = false;
-            LoseState L = GetComponent<LoseState>();
-            L.GameOver();
+            //LoseState lose = GetComponent<LoseState>();
+            GameOver();
+
+
         }               
+    }
+
+    public void GameOver()
+    {
+        
+        Lose_Screen.SetActive(true);  //activates the lose screen when goober falls on the collider.
+        PlaySound(YouLoseSound);
+        Goober.SetActive(false); //deletes goober.
     }
 
     void Launch()
     {
-            
+        if (!NormalGoob)
+        {
         projectileRB = Instantiate(projectilePrefab, gooberRig.position + Vector2.up * 0.5f, Quaternion.identity);
         projectileRB.velocity = projectileRB.transform.right * projSpeed;
-           
+        }
+        
     } 
 
      private void Flip()
@@ -286,7 +311,10 @@ public class GooberController : MonoBehaviour
              
     }
 
-    
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
 }
 
 

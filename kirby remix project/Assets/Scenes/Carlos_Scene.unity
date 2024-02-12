@@ -2275,7 +2275,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -184.16003, y: -41}
+  m_AnchoredPosition: {x: -184.16003, y: -40.999992}
   m_SizeDelta: {x: -430.28003, y: -848.9053}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &394328444
@@ -4097,7 +4097,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666822119}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.496776, y: -3.1069663, z: -0.568198}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9239,6 +9239,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1963587357, guid: e489f3c37560f274a8534339d0e55bf6, type: 3}
+      propertyPath: Lose_Screen
+      value: 
+      objectReference: {fileID: 429474257}
+    - target: {fileID: 1963587357, guid: e489f3c37560f274a8534339d0e55bf6, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 666822120}
     - target: {fileID: 7027487375960572665, guid: e489f3c37560f274a8534339d0e55bf6, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -15850,8 +15858,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -434.36328, y: -1.3320312}
-  m_SizeDelta: {x: -975.3152, y: -98.5974}
+  m_AnchoredPosition: {x: -375.27, y: -1.3320312}
+  m_SizeDelta: {x: -857.14, y: -98.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1164961479
 MonoBehaviour:
@@ -19399,8 +19407,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

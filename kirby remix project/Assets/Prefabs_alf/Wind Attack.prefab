@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4500288958633076159}
   - component: {fileID: 4500288958633076158}
   - component: {fileID: 7130602985833562891}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wind Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
