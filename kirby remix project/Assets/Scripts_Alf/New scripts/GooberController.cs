@@ -19,7 +19,8 @@ public class GooberController : MonoBehaviour
 
     // Projectiles
     //public GameObject projectilePrefab;
-    [SerializeField] private Rigidbody2D projectilePrefab;
+    [SerializeField] private Rigidbody2D projectileFirePrefab;
+    [SerializeField] private Rigidbody2D projectileWindPrefab;
     [SerializeField] private float projSpeed = 15f;
     private Rigidbody2D projectileRB;
 
@@ -143,7 +144,20 @@ public class GooberController : MonoBehaviour
 
         if(GodModeOn)
         {
+            if (isInvincible)
+            {
+                invincibleTimer -= Time.deltaTime;
+                if (invincibleTimer < 0)
+                    isInvincible = false;
+            }
+
             currentHealth = 1;
+
+            if(currentHealth <= 0)
+            {
+                isInvincible = false;
+                GameOver();
+            }   
         }
 
         if(isDashing)
@@ -213,7 +227,7 @@ public class GooberController : MonoBehaviour
             {
                 spriteR.sprite = WindGoober;
                 GetComponent<Animator>().runtimeAnimatorController = greenAnim as RuntimeAnimatorController;
-                Debug.Log("Fire get!");
+                Debug.Log("Wind get!");
             }
             gooberRig.velocity = new Vector2(horizontal * speed, gooberRig.velocity.y);
             gooberRig.AddForce(new Vector2(gooberRig.velocity.x, jumpingPower)); 
@@ -292,8 +306,16 @@ public class GooberController : MonoBehaviour
     {
         if (!NormalGoob)
         {
-        projectileRB = Instantiate(projectilePrefab, gooberRig.position + Vector2.up * 0.5f, Quaternion.identity);
-        projectileRB.velocity = projectileRB.transform.right * projSpeed;
+            if(FireGoob && !WindGoob)
+            {
+                projectileRB = Instantiate(projectileFirePrefab, gooberRig.position + Vector2.up * 0.5f, Quaternion.identity);
+                projectileRB.velocity = projectileRB.transform.right * projSpeed;
+            }
+            else if (WindGoob && !FireGoob)
+            {
+                projectileRB = Instantiate(projectileWindPrefab, gooberRig.position + Vector2.up * 0.5f, Quaternion.identity);
+                projectileRB.velocity = projectileRB.transform.right * projSpeed;
+            }
         }
         
     } 

@@ -232,7 +232,8 @@ MonoBehaviour:
   Lose_Screen: {fileID: 0}
   YouLoseSound: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   audioSource: {fileID: 0}
-  projectilePrefab: {fileID: 2960315193981519417, guid: 9fdb8cb5c0d614540be76196529c10eb, type: 3}
+  projectileFirePrefab: {fileID: 2960315193981519417, guid: 725ce5764bd61bb4b9a90a3f3d7ce344, type: 3}
+  projectileWindPrefab: {fileID: 4500288958633076159, guid: 8aa95f8184ed61c489862efb891730af, type: 3}
   projSpeed: 15
   groundCheck: {fileID: 7027487377112362976}
   groundLayer:

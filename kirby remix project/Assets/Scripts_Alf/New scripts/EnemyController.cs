@@ -117,9 +117,9 @@ public class EnemyController : MonoBehaviour
         if (gooberController != null)
         {
             
-            enemyRig.simulated = false;
+            //enemyRig.simulated = false;
             //optional if you added the fixed animation
-            animator.SetTrigger("EnemyDeath"); //<----- ALFRED
+            //animator.SetTrigger("EnemyDeath"); //<----- ALFRED
             Destroy(gameObject);
         }
     } 

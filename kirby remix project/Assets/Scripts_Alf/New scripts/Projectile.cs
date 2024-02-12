@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Projectile : MonoBehaviour
 {
     Rigidbody2D rigidbody2d;
@@ -21,14 +22,14 @@ public class Projectile : MonoBehaviour
         }
     }
     
-    void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        EnemyController e = other.collider.GetComponent<EnemyController>();
+        EnemyController e = other.GetComponent<EnemyController>();
         if (e != null)
         {
             e.EnemyDeath();
+            Destroy(gameObject);
         }
     
-        Destroy(gameObject);
     }
 }
